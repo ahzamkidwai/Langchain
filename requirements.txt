@@ -1,4 +1,4 @@
-# Langchain core
+# LangChain Core
 langchain
 langchain-core
 
@@ -27,5 +27,21 @@ python-dotenv
 # Machine Learning Utilities
 numpy
 scikit-learn
-
 sentence-transformers
+
+# Frontend (Streamlit)
+streamlit
+streamlit-chat
+streamlit-option-menu
+streamlit-extras
+
+# File Upload & Data Handling
+pandas
+pyarrow
+
+# Visualization
+plotly
+altair
+
+# Image Processing (optional)
+pillow
