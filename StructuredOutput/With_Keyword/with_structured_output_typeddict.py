@@ -6,7 +6,7 @@ load_dotenv()
 
 model = ChatGoogleGenerativeAI(
     # model="gemini-2.5-flash"
-    model="gemini-3.5-flash"
+    model="gemini-2.5-flash"
 )
 
 class Review(TypedDict):
@@ -15,6 +15,7 @@ class Review(TypedDict):
     sentiment: Annotated[str, "Return sentiment of the review either negative, positive or neutral/mixed"]
     pros: Annotated[Optional[list[str]], "Write down all the pros inside a list"]
     cons: Annotated[Optional[list[str]], "Write down all the cons inside a list"]
+    name: Annotated[Optional[list[str]], "Write down name of the reviewer"]
 
 structured_model = model.with_structured_output(Review)
 
@@ -28,3 +29,6 @@ result = structured_model.invoke(
 print(result)
 print(result['summary'])
 print(result['sentiment'])
+# print(result['pros'])
+# print(result['cons'])
+# print(result['name'])
