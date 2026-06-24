@@ -1,7 +1,6 @@
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
-from langchain_core.output_parsers import StrOutputParser
 
 # Load environment variables
 load_dotenv()
@@ -24,8 +23,21 @@ template2 = PromptTemplate(
     input_variables=["text"]
 )
 
-parser = StrOutputParser()
+# Generate report
+prompt1 = template1.invoke({"topic": "Black Hole"})
 
-chain = template1 | model | parser | template2 | model | parser
-result = chain.invoke({ 'topic': 'Black Hole' })
-print('Result : ', result)
+print("\nPrompt 1:")
+print(prompt1)
+
+result1 = model.invoke(prompt1.to_string())
+
+print("\nDetailed Report:\n")
+print(result1.content)
+
+# Generate summary
+prompt2 = template2.invoke({"text": result1.content})
+
+result2 = model.invoke(prompt2.to_string())
+
+print("\nSummary:\n")
+print(result2.content)
