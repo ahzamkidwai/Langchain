@@ -53,3 +53,4 @@ The SVM algorithm is widely used in machine learning as it can handle both linea
 result = chain.invoke({'text': text})
 print("Result of Parallel Chain :\n\n", result)
 
+chain.get_graph().print_ascii()
